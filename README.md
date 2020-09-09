@@ -31,9 +31,8 @@ INSERT INTO IncomeTax VALUES(9000000,0.33,1536000);
 INSERT INTO IncomeTax VALUES(18000000,0.40,2796000);
 INSERT INTO IncomeTax VALUES(40000000,0.45,4796000);
 ```
-これをuser.csvに記載されているデータと付き合わして、氏名(名前+苗字),所得,所得税として払うべき金額(円)(小数点切り上げ),控除額,使った税率を検索するクエリを求めよ。
-なお、user.csvの所得はドル表記、給料は所得控除済み、1$=130円とする。
-使っているdbはsqlite3とする。
+これをuser.csvに記載されているデータと付き合わして、氏名(名前+苗字),所得,所得税として払うべき金額(円)(小数点切り上げ),控除額,使った税率を検索するクエリを求めよ。 \
+なお、user.csvの所得はドル表記、給料は所得控除済み、1$=130円とし、使っているdbはsqlite3とする。
 ```
 -- テーブル定義
 CREATE TABLE user(
@@ -91,7 +90,8 @@ CREATE TABLE Organization(
 SQL
 ```
 WITH RECURSIVE r AS (
-    SELECT *, 1 as hierarchy
+    SELECT *
+          ,1 as hierarchy
     FROM Organization
     WHERE distributer_id = 1
     UNION
