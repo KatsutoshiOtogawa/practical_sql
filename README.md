@@ -3,7 +3,7 @@ Window関数についての実践的な使い方。及び説明です。
 
 ## 所得税の計算
 
->|課税される所得金額|税率|控除額|
+>|課税される所得金額|税率|控除額(円)|
 >|---------------|---|-----|
 >|1,000円 から 1,949,000円まで|5％|0円|
 >|1,950,000円 から 3,299,000円まで|10％|97,500円|
@@ -19,7 +19,7 @@ Window関数についての実践的な使い方。及び説明です。
 -- テーブル定義
 CREATE TABLE IncomeTax(
   income int,
-  double real,
+  tax real,
   Deduction int
 );
 
@@ -32,9 +32,21 @@ INSERT INTO IncomeTax VALUES(9000000,0.33,1536000);
 INSERT INTO IncomeTax VALUES(18000000,0.40,2796000);
 INSERT INTO IncomeTax VALUES(40000000,0.45,4796000);
 ```
-良い子は○○情○技○者試験みたいに日本語のカラム名、テーブル名を使っちゃだめだよ。
+これをuser.csvに記載されているデータと付き合わして、氏名(名前+苗字),控除額,所得税として払うべき金額(円),使った税率を検索するクエリを求めよ。
+なお、user.csvの所得はドル表記、また1$=130円とする。
+```
+-- テーブル定義
+CREATE TABLE user(
+  firstname text,
+  lastname test,
+  income int
+);
 
-
+-- Random Data Generatorで作成済みのユーザーデータを流し込み。
+.mode csv
+.import ./user.csv user
+```
 
 # レファレンス
 [国税庁](https://www.nta.go.jp/taxes/shiraberu/taxanswer/shotoku/2260.htm)
+[Random Data Generator](http://randat.com/)
