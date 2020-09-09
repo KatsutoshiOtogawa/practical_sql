@@ -111,3 +111,4 @@ SELECT * FROM r
 # Random Data Generatorの仕様
 - CRLFで出力される
 - UTF8で出力
+- id列は自分で作成する必要あり。
