@@ -20,7 +20,7 @@ Window関数についての実践的な使い方。及び説明です。
 CREATE TABLE IncomeTax(
   income int,
   tax real,
-  Deduction int
+  deduction int
 );
 
 -- 値放り込み
@@ -32,8 +32,8 @@ INSERT INTO IncomeTax VALUES(9000000,0.33,1536000);
 INSERT INTO IncomeTax VALUES(18000000,0.40,2796000);
 INSERT INTO IncomeTax VALUES(40000000,0.45,4796000);
 ```
-これをuser.csvに記載されているデータと付き合わして、氏名(名前+苗字),控除額,所得税として払うべき金額(円),使った税率を検索するクエリを求めよ。
-なお、user.csvの所得はドル表記、また1$=130円とする。
+これをuser.csvに記載されているデータと付き合わして、氏名(名前+苗字),所得,所得税として払うべき金額(円),控除額,使った税率を検索するクエリを求めよ。
+なお、user.csvの所得はドル表記、給料は所得控除済み、1$=130円とする。
 ```
 -- テーブル定義
 CREATE TABLE user(
@@ -47,6 +47,19 @@ CREATE TABLE user(
 .import ./user.csv user
 ```
 
+
+```
+SELECT user.firstname || ' ' || user.lastname
+       ,user.income * 130
+       ,user.income * 130 * incometax.tax
+       ,incometax.deduction
+       ,incometax.tax 
+FROM user INNER JOIN incometax
+  ON user.income * 130 < incometax.income
+GROUP BY user.firstname
+        ,user.lastname
+        ,user.income;
+```
 # レファレンス
 [国税庁](https://www.nta.go.jp/taxes/shiraberu/taxanswer/shotoku/2260.htm)
 [Random Data Generator](http://randat.com/)
