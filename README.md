@@ -142,6 +142,8 @@ ORDER BY r.hierarchy
 
 [Random Data Generator](http://randat.com/)
 
+[アムウェイのボーナスについて](https://topteam-world.com/2017/09/17/post-1545/)
+
 # Random Data Generatorの仕様
 - CRLFで出力される
 - UTF8で出力
