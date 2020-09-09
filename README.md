@@ -105,4 +105,10 @@ SELECT * FROM r
 ## 
 # レファレンス
 [国税庁](https://www.nta.go.jp/taxes/shiraberu/taxanswer/shotoku/2260.htm)
+
 [Random Data Generator](http://randat.com/)
+
+# Random Data Generatorの仕様
+- CRLFで出力される
+- UTF8で出力
+- id列は自分で作成する必要あり。
