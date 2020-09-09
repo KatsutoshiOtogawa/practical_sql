@@ -42,7 +42,6 @@ CREATE TABLE user(
 );
 
 -- Random Data Generatorで作成済みのユーザーデータを流し込み。
--- 一行目だけカラム名のため、あらかじめ削除しておくこと。
 .mode csv
 .import ./user.csv user
 ```
@@ -73,6 +72,10 @@ CREATE TABLE distributer(
   lastname test
 );
 
+-- Random Data Generatorで作成済みのユーザーデータを流し込み。
+.mode csv
+.import ./distributer.csv distributer
+
 ```
 
 Organization
@@ -84,6 +87,10 @@ CREATE TABLE Organization(
   distributer_id int,
   downstream_id int
 );
+
+-- 作成済みのユーザーデータを流し込み。
+.mode csv
+.import ./organization.csv Organization
 
 ```
 
