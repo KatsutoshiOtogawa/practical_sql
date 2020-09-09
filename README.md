@@ -91,15 +91,25 @@ CREATE TABLE Organization(
 SQL
 ```
 WITH RECURSIVE r AS (
-    SELECT * 
+    SELECT *, 1 as hierarchy
     FROM Organization
     WHERE distributer_id = 1
-    UNION ALL
+    UNION
     SELECT Organization.*
+          ,hierarchy + 1 as hierarchy
     FROM Organization, r 
     WHERE Organization.distributer_id = r.downstream_id
 )
-SELECT * FROM r
+SELECT distributer.firstname || ' ' || distributer.lastname
+      ,r.distributer_id
+      ,r.hierarchy
+FROM r INNER JOIN distributer
+  ON r.distributer_id = distributer.id
+GROUP BY distributer.firstname
+      ,distributer.lastname
+      ,r.distributer_id
+      ,r.hierarchy
+ORDER BY r.hierarchy
 ```
 
 ## 
