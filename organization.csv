@@ -1,0 +1,8 @@
+distributer_id int,downstream_id int
+1,22
+1,23
+22,56
+22,57
+22,58
+23,44
+23,49
