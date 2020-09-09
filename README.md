@@ -91,7 +91,8 @@ CREATE TABLE Organization(
 SQL
 ```
 WITH RECURSIVE r AS (
-    SELECT *, 1 as hierarchy
+    SELECT *
+          ,1 as hierarchy
     FROM Organization
     WHERE distributer_id = 1
     UNION
