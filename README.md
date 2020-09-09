@@ -61,6 +61,48 @@ GROUP BY user.firstname
         ,user.lastname
         ,user.income;
 ```
+
+## ネットワークビジネスの組織図
+
+|id|firstname|lastname|
+|---|----|---|
+
+```
+CREATE TABLE distributer(
+  id int primary key,
+  firstname text,
+  lastname test
+);
+
+```
+
+Organization
+|distributer_id|downstream_id|
+|----|----|
+
+```
+CREATE TABLE Organization(
+  distributer_id int,
+  downstream_id int
+);
+
+```
+
+SQL
+```
+WITH RECURSIVE r AS (
+    SELECT * 
+    FROM Organization
+    WHERE distributer_id = 1
+    UNION ALL
+    SELECT Organization.*
+    FROM Organization, r 
+    WHERE Organization.distributer_id = r.downstream_id
+)
+SELECT * FROM r
+```
+
+## 
 # レファレンス
 [国税庁](https://www.nta.go.jp/taxes/shiraberu/taxanswer/shotoku/2260.htm)
 [Random Data Generator](http://randat.com/)
