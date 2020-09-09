@@ -109,6 +109,5 @@ SELECT * FROM r
 [Random Data Generator](http://randat.com/)
 
 # Random Data Generatorの仕様
--
-  - CRLFで出力される
-  - UTF8で出力
+- CRLFで出力される
+- UTF8で出力
